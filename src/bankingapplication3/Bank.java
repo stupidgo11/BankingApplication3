@@ -84,13 +84,20 @@ public class Bank {
     public Account getAccount(int number){
         Connection con = BankConnection.connect();
         Account account=null;
-        String sql = "select * from account";
+        String sql = "select * from account where accID="+number;
         Statement statement;
+        
         try {
+            String accountName="";
+            double balance=0;
             statement = con.createStatement();
-            ResultSet result = statement.executeQuery(sql);
-            String accountName =result.getString(2);
-            double balance=result.getDouble(3);
+            ResultSet results = statement.executeQuery(sql);
+            while(results.next()) {
+                accountName = results.getString(2);
+                balance = results.getDouble(3);
+            }
+//            String accountName =results.getString(2);
+//            double balance=results.getDouble(3);
             account = new Account(number,accountName,balance);
             
         } catch (SQLException ex) {

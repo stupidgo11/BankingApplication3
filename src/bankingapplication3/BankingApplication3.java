@@ -37,6 +37,7 @@ public class BankingApplication3 {
                     number = generateAccountNumber();
                     System.out.print("Enter Account Name: ");
                     name = scan.next();
+                           
                     scan.nextLine();
                     
                     System.out.print("Enter Initial Balance: ");
@@ -45,6 +46,7 @@ public class BankingApplication3 {
                     bank.openAcoount(account);
                     System.out.println();
                     break;
+                            
                 case 3:
                     System.out.print("Enter Account Number: ");
                     number = scan.nextInt();
